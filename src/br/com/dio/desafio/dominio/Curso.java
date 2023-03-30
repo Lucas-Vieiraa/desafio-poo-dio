@@ -1,6 +1,8 @@
 package br.com.dio.desafio.dominio;
 
 
+import java.util.Scanner;
+
 public class Curso extends Conteudo{
 
     private int cargaHoraria;
@@ -23,11 +25,16 @@ public class Curso extends Conteudo{
     public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
     }
-    public void cadastrarCurso(String titulo,String descricao,int cargaHoraria){
-       Curso curso = new Curso();
-       curso.setTitulo(titulo);
-       curso.setDescricao(descricao);
-       curso.setCargaHoraria(cargaHoraria);
+
+    public void inserirCurso(String titulo, String descricao, int cargaHoraria){
+        setTitulo(titulo);
+        setDescricao(descricao);
+        setCargaHoraria(cargaHoraria);
+    }
+    public void removerCurso(){
+        setTitulo(null);
+        setDescricao(null);
+        setCargaHoraria(0);
     }
 
 

@@ -7,32 +7,38 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        Curso curso1 = new Curso();
-       curso1.cadastrarCurso("Curso Java","Descrição curso java", 8);
+        Curso cursoJava = new Curso();
+       cursoJava.inserirCurso("Curso Java","Descrição de Java", 8);
 
-        Curso curso2 = new Curso();
-        curso2.cadastrarCurso("Curso Js", "Curso Js",4);
+        Curso cursoJs = new Curso();
+        cursoJs.inserirCurso("Curso Js","Descrição de Js", 4);
 
-        Mentoria mentoria = new Mentoria();
-        mentoria.cadastrarMentoria("Mentoria de Java","Descrição Mentoria de Java");
+        Mentoria mentoriaJava = new Mentoria();
+        mentoriaJava.inserirMentoria("Mentoria de Java","Descrição Mentoria de Java");
+        Mentoria mentoriaJs = new Mentoria();
+        mentoriaJs.inserirMentoria("Mentoria de Js","Descrição Mentoria de Js");
+
+        System.out.println(cursoJava);
+        System.out.println(cursoJs);
+        System.out.println(mentoriaJava);
+        System.out.println(mentoriaJs);
 
 
-        System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);
+        cursoJava.removerCurso();
+        System.out.println(cursoJava);
 
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.setNome("Bootcamp Java Developer");
         bootcamp.setDescricao("Descrição Bootcamp Java Developer");
-        bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(curso2);
-        bootcamp.getConteudos().add(mentoria);
+        bootcamp.getConteudos().add(cursoJava);
+        bootcamp.getConteudos().add(cursoJs);
+        bootcamp.getConteudos().add(mentoriaJava);
 
         Bootcamp bootcamp1 = new Bootcamp();
         bootcamp1.setNome("Bootcamp Banco Pan Developer");
-        bootcamp1.setDescricao("Descrição Bootcamp Java Developer");
-        bootcamp1.getConteudos().add(curso1);
-        bootcamp1.getConteudos().add(mentoria);
+        bootcamp1.setDescricao("Descrição Bootcamp JavaScript Developer");
+        bootcamp1.getConteudos().add(cursoJs);
+        bootcamp1.getConteudos().add(mentoriaJs);
 
         Dev devCamila = new Dev();
         devCamila.setNome("Camila");
@@ -63,8 +69,6 @@ public class Main {
         System.out.println("XP:" + devJoao.calcularTotalXp());
 
 
-
     }
-
 
 }
