@@ -13,6 +13,12 @@ public class Mentoria extends Conteudo{
 
     public Mentoria() {
     }
+    public void cadastrarMentoria(String titulo,String descricao){
+        Mentoria mentoria = new Mentoria();
+        mentoria.setTitulo(titulo);
+        mentoria.setDescricao(descricao);
+        mentoria.setData(LocalDate.now());
+    }
 
     public LocalDate getData() {
         return data;

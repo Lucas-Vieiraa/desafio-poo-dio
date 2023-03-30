@@ -8,17 +8,31 @@ public class Dev {
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
     public void inscreverBootcamp(Bootcamp bootcamp){
-        this.conteudosInscritos.addAll(bootcamp.getConteudos());
-        bootcamp.getDevsInscritos().add(this);
+        Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+        if(!conteudo.isPresent()) {
+                this.conteudosInscritos.addAll(bootcamp.getConteudos());
+                bootcamp.getDevsInscritos().add(this);
+            } else {
+                System.err.println("Você já está inscrito em um BootCamp termine o atual primeiro");
+        }
     }
+    public void desinscreverBootcamp(Bootcamp bootcamp){
 
+            Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+            if (conteudo.isPresent()) {
+                    this.conteudosInscritos.removeAll(bootcamp.getConteudos());
+                    bootcamp.getDevsInscritos().remove(this);
+                } else {
+                    System.err.println("Nenhum Bootcamp para remover! ");
+            }
+    }
     public void progredir() {
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
         if(conteudo.isPresent()) {
-            this.conteudosConcluidos.add(conteudo.get());
-            this.conteudosInscritos.remove(conteudo.get());
-        } else {
-            System.err.println("Você não está matriculado em nenhum conteúdo!");
+                this.conteudosConcluidos.add(conteudo.get());
+                this.conteudosInscritos.remove(conteudo.get());
+            } else {
+                System.err.println("Você não está matriculado em nenhum conteúdo!");
         }
     }
 
@@ -36,8 +50,6 @@ public class Dev {
                 .mapToDouble(Conteudo::calcularXp)
                 .sum();*/
     }
-
-
     public String getNome() {
         return nome;
     }
